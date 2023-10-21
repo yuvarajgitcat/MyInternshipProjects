@@ -11,12 +11,12 @@ def generate_Password(n):
 
 #check the strength of generated password based on its length.
 def check_password_strength(password):
-    if len(password) < 8:
-        return "Weak"  
-    elif len(password) < 12:
-        return " Moderate" 
+    if len(password) <= 8:
+        return "Weak \u2717"
+    elif len(password) < 12: 
+      return " Moderate" 
     else:
-        return "Strong"  
+        return "Strong \u2713"  
 
 # functin for storing password history.
 def save_password_to_file(password, filename):
@@ -43,8 +43,8 @@ if __name__ == "__main__":
                 n = int(input("Enter the length of the password: "))
                 qty = int(input("How many passwords do you want:"))
                 # minimum length of password is above 8
-                if n <= 8 or qty <= 0:
-                    print("Password length should be greater than 8 and quantity should be greater than zero.")
+                if n < 8 or qty <= 0:
+                    print(" \u26A0  Password length should be greater than 8 and quantity should be greater than zero.")
                 else:
                     while qty > 0:
                         password = generate_Password(n)
@@ -57,7 +57,7 @@ if __name__ == "__main__":
                         qty -= 1
                     strength = check_password_strength(password)
                     print("Password Strength Indicator:", strength )
-                    print("Passwords saved to 'passwords.txt'.")
+                    print("Passwords saved to 'passwords.txt'. \u2713 ")
             except ValueError:
                 print(" \u26A0 Invalid input. Please enter valid integer values for password length and quantity.")
 
