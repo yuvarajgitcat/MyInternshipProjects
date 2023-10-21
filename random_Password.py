@@ -1,5 +1,6 @@
 import random   # importing the random module
 import datetime
+import os
 
 # function to generate a password.
 def generate_Password(n):
@@ -29,6 +30,9 @@ def read_password_history(filename):
         return file.read()
 
 if __name__ == "__main__":
+    password_file = "passwords.txt"  # Define the filename
+    if not os.path.exists(password_file):
+        open(password_file, 'w').close()  # Create the file if it doesn't exist
     while True:
         users_choice = input("Please enter 'generate' if you want to generate a password, 'history' to view saved passwords, or 'exit' to quit: ")
         if users_choice == 'exit':
